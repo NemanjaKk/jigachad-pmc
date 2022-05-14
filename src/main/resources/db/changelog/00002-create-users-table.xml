@@ -10,13 +10,17 @@
     <changeSet id="1" author="nemanja">
         <createTable tableName="users">
             <column name="id" type="bigint" autoIncrement="true">
-                <constraints primaryKey="true" primaryKeyName="person_id_pk" />
+                <constraints primaryKey="true" primaryKeyName="user_id_pk" />
             </column>
             <column name="password" type="varchar(255)"/>
             <column name="name" type="varchar(255)"/>
             <column name="email" type="varchar(255)">
                 <constraints unique="true"/>
             </column>
+            <column name="role_id" type="bigint"/>
         </createTable>
+        <addForeignKeyConstraint baseTableName="users" baseColumnNames="role_id"
+                                 constraintName="user_role_id_fk" referencedTableName="roles"
+                                 referencedColumnNames="id" />
     </changeSet>
 </databaseChangeLog>

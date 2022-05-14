@@ -7,4 +7,5 @@ public class UserDto {
     String name;
     String email;
     String password;
+    int role_id;
 }

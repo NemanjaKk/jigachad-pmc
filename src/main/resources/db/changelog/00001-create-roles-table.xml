@@ -7,6 +7,14 @@
       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd
       http://www.liquibase.org/xml/ns/pro
       http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd">
-    <include file="db/changelog/00001-create-roles-table.xml"/>
-    <include file="db/changelog/00002-create-users-table.xml"/>
+    <changeSet id="2" author="nemanja">
+        <createTable tableName="roles">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="role_id_pk" />
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints unique="true"/>
+            </column>
+        </createTable>
+    </changeSet>
 </databaseChangeLog>

@@ -5,24 +5,21 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "users")
-public class User {
+@Table(name = "roles")
+public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
-    @Column(name = "email")
-    private String email;
-    @Column(name = "password")
-    private String password;
     @Column(name = "name")
     private String name;
-    @ManyToOne
-    @JoinColumn(name="role_id")
-    private Role role;
+    @OneToMany(mappedBy = "role")
+    private List<User> users = new ArrayList<>();
 }
